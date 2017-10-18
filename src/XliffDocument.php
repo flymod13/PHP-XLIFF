@@ -3,6 +3,8 @@
  * @author Oren Yagev <oyagev@gmail.com>
  */
 
+namespace OHT\Modules\PHPXLIFF;
+
 /**
  * Parent class for nodes in the xliff document
  */
@@ -104,12 +106,12 @@ class XliffNode{
 	 * Sets an attribute
 	 * @param string $name
 	 * @param string $value
-	 * @throws Exception
+	 * @throws \Exception
 	 * @return XliffNode
 	 */
 	function setAttribute($name, $value){
 		/*if (!(string)$value){
-			throw new Exception("Attribute must be a string");
+			throw new \Exception("Attribute must be a string");
 		}*/
 		$this->attributes[$name] = trim((string)$value);
 		return $this;
@@ -193,7 +195,8 @@ class XliffNode{
 			if ( $append ){
 				
 				$cls = $this->supportedContainers[$pluralName];
-				
+                $cls = 'OHT\Modules\PHPXLIFF\\'.$cls;
+
 				$this->containers[$pluralName][] = new $cls();
 				
 			}
@@ -205,21 +208,23 @@ class XliffNode{
 			//Create new node if explicitly required
 			if ($append){
 				$cls = $this->supportedNodes[$name];
+                $cls = 'OHT\Modules\PHPXLIFF\\'.$cls;
+
 				$this->nodes[$name] = new $cls();
 				$this->nodes[$name]->setName($name);
 			}
 			
 			return (!empty($this->nodes[$name])) ? $this->nodes[$name] : FALSE;
 		}
-		throw new Exception(sprintf("'%s' is not supported for '%s'",$name,get_class($this)));
+		throw new \Exception(sprintf("'%s' is not supported for '%s'",$name,get_class($this)));
 	}
 	
 	/**
 	 * Export this node to a DOM object
-	 * @param DOMDocument $doc - parent DOMDocument must be provided
-	 * @return DOMElement
+	 * @param \DOMDocument $doc - parent \DOMDocument must be provided
+	 * @return \DOMElement
 	 */
-	function toDOMElement(DOMDocument $doc){
+	function toDOMElement(\DOMDocument $doc){
 		$element = $doc->createElement($this->getName());
 		foreach($this->attributes as $name=>$value){
 			$element->setAttribute($name, $value);
@@ -241,12 +246,12 @@ class XliffNode{
 	
 	/**
 	 * Convert DOM element to XliffNode structure 
-	 * @param DOMNode $element
-	 * @throws Exception
+	 * @param \DOMNode $element
+	 * @throws \Exception
 	 * @return string|XliffNode
 	 */
-	public static function fromDOMElement(DOMNode $element){
-		if ($element instanceOf DOMText){
+	public static function fromDOMElement(\DOMNode $element){
+		if ($element instanceOf \DOMText){
 			return $element->nodeValue;
 		}else{
 			$name = $element->tagName;
@@ -254,11 +259,13 @@ class XliffNode{
 			//check if tag is supported
 			if (empty(self::$mapNameToClass[$element->tagName])){
 				$cls = 'XliffNode';
-				//throw new Exception(sprintf("Tag name '%s' is unsupported",$name));
+				//throw new \Exception(sprintf("Tag name '%s' is unsupported",$name));
 			}else{
 				//Create the XliffNode object (concrete object)
 				$cls = self::$mapNameToClass[$element->tagName];
 			}
+
+            $cls = 'OHT\Modules\PHPXLIFF\\'.$cls;
 			$node = new $cls($element->tagName);
 			/* @var $node XliffNode */
 			
@@ -314,12 +321,12 @@ class XliffDocument extends XliffNode{
     
    
     /**
-     * Convert this XliffDocument to DOMDocument
-     * @return DOMDocument
+     * Convert this XliffDocument to \DOMDocument
+     * @return \DOMDocument
      */
     public function toDOM(){
     	// create the new document
-    	$doc = new DOMDocument();
+    	$doc = new \DOMDocument();
 
         // create the xliff root element
         $xliff = $this->toDOMElement($doc);
@@ -334,19 +341,19 @@ class XliffDocument extends XliffNode{
     }
     
     /**
-     * Build XliffDocument from DOMDocument
+     * Build XliffDocument from \DOMDocument
      *  
-     * @param DOMDocument $doc
-     * @throws Exception
+     * @param \DOMDocument $doc
+     * @throws \Exception
      * @return XliffDocument
      */
-    public static function fromDOM(DOMDocument $doc){
+    public static function fromDOM(\DOMDocument $doc){
     	if (!($doc->firstChild &&  $doc->firstChild->tagName=='xliff'))
-    		throw new Exception("Not an XLIFF document");
+    		throw new \Exception("Not an XLIFF document");
     		
     	
     	$xlfDoc = $doc->firstChild;
-    	/* @var $xlfDoc DOMElement */
+    	/* @var $xlfDoc \DOMElement */
     	
     	$ver = $xlfDoc->getAttribute('version') ? $xlfDoc->getAttribute('version') : '1.2';
     	

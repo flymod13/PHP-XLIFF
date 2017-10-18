@@ -1,7 +1,6 @@
 <?php
 
-require_once './src/XliffDocument.php';
-
+use OHT\Modules\PHPXLIFF\XliffDocument ;
 use PHPUnit\Framework\TestCase;
 
 class XliffDocumentTest extends TestCase
