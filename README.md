@@ -2,11 +2,18 @@
 
 This library help in the process of creating and navigating within an XLIFF document.
 
+## Installation ##
+
+```
+composer config repositories.oyagev/PHP-XLIFF git https://github.com/BrandonGillis/PHP-XLIFF.git
+composer require oyagev/PHP-XLIFF:dev-master
+```
+
 ## Usage Example ##
 
 	<?php
 	
-	require_once '../src/XliffDocument.php';
+	use oyagev\PhpXliff\XliffDocument;
 	
 	echo "Generating new XLIFF document:" . PHP_EOL;
 	$xliff = new XliffDocument();
