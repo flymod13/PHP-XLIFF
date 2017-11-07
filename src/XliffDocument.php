@@ -287,6 +287,7 @@ class XliffNode{
 	
 } 
 
+namespace oyagev\PhpXliff;
 /**
  * Wrapper class for Xliff documents. 
  * Externally, you'll want to use this class.
@@ -364,6 +365,7 @@ class XliffDocument extends XliffNode{
 }
 
 
+namespace oyagev\PhpXliff;
 /**
  * Concrete class for file tag
  * 
@@ -379,6 +381,7 @@ class XliffFile extends XliffNode{
 	
 }
 
+namespace oyagev\PhpXliff;
 /**
  * Concrete class for file header tag
  * @author oyagev
@@ -388,6 +391,7 @@ class XliffFileHeader extends XliffNode{
 	protected $name = 'header';
 }
 
+namespace oyagev\PhpXliff;
 
 /**
  * Concrete class for file body tag
@@ -406,6 +410,7 @@ class XliffFileBody extends XliffNode{
 }
 
 
+namespace oyagev\PhpXliff;
 /**
  * Concrete class for group tag
  * 
@@ -420,7 +425,7 @@ class XliffUnitsGroup extends XliffNode{
 }
 
 
-
+namespace oyagev\PhpXliff;
 /**
  * Concrete class for trans-unit tag
  * 
