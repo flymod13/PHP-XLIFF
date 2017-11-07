@@ -2,5 +2,10 @@
   "name": "oyagev/PHP-XLIFF",
   "require-dev": {
     "phpunit/phpunit": "^6.2"
-  }
+  },
+    "autoload": {
+        "psr-4": {
+            "oyagev\\PhpXliff\\": "src"
+        }
+    }
 }
