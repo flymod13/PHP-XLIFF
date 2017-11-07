@@ -11,7 +11,7 @@ namespace oyagev\PhpXliff;
 class XliffUnit extends XliffNode{
 	protected $name = 'trans-unit';
 	protected $supportedNodes = array(
-		'source' => 'XliffNode',
-		'target' => 'XliffNode',
+		'source' => 'oyagev\PhpXliff\XliffNode',
+		'target' => 'oyagev\PhpXliff\XliffNode',
 	);
 }

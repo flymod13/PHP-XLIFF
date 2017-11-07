@@ -10,8 +10,8 @@ namespace oyagev\PhpXliff;
 class XliffFile extends XliffNode{
 	protected $name = 'file';
 	protected $supportedNodes = array(
-		'header' 	=> 'XliffFileHeader',
-		'body' 		=> 'XliffFileBody',
+		'header' 	=> 'oyagev\PhpXliff\XliffFileHeader',
+		'body' 		=> 'oyagev\PhpXliff\XliffFileBody',
 	);
 	
 }

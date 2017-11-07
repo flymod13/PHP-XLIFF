@@ -11,6 +11,6 @@ namespace oyagev\PhpXliff;
 class XliffUnitsGroup extends XliffNode{
 	protected $name = 'group';
 	protected $supportedContainers = array(
-		'trans-units'		=> 'XliffUnit'
+		'trans-units'		=> 'oyagev\PhpXliff\XliffUnit'
     );
 }

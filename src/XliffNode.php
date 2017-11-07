@@ -6,14 +6,14 @@ class XliffNode{
 	
 	//Map tag names to classes
 	static protected $mapNameToClass = array(
-		'xliff'		=> 'XliffDocument',
-		'file'		=> 'XliffFile',
-		'body'		=> 'XliffFileBody',
-		'header'	=> 'XliffFileHeader',
-		'group'		=> 'XliffUnitsGroup',
-		'trans-unit'=> 'XliffUnit',
-		'source'	=> 'XliffNode',
-		'target'	=> 'XliffNode',
+		'xliff'		=> 'oyagev\PhpXliff\XliffDocument',
+		'file'		=> 'oyagev\PhpXliff\XliffFile',
+		'body'		=> 'oyagev\PhpXliff\XliffFileBody',
+		'header'	=> 'oyagev\PhpXliff\XliffFileHeader',
+		'group'		=> 'oyagev\PhpXliff\XliffUnitsGroup',
+		'trans-unit'=> 'oyagev\PhpXliff\XliffUnit',
+		'source'	=> 'oyagev\PhpXliff\XliffNode',
+		'target'	=> 'oyagev\PhpXliff\XliffNode',
 	);
 	
 	
@@ -207,7 +207,7 @@ class XliffNode{
 			
 			return (!empty($this->nodes[$name])) ? $this->nodes[$name] : FALSE;
 		}
-		throw new Exception(sprintf("'%s' is not supported for '%s'",$name,get_class($this)));
+		throw new \Exception(sprintf("'%s' is not supported for '%s'",$name,get_class($this)));
 	}
 	
 	/**
@@ -215,7 +215,7 @@ class XliffNode{
 	 * @param DOMDocument $doc - parent DOMDocument must be provided
 	 * @return DOMElement
 	 */
-	function toDOMElement(DOMDocument $doc){
+	function toDOMElement(\DOMDocument $doc){
 		$element = $doc->createElement($this->getName());
 		foreach($this->attributes as $name=>$value){
 			$element->setAttribute($name, $value);
@@ -241,7 +241,7 @@ class XliffNode{
 	 * @throws Exception
 	 * @return string|XliffNode
 	 */
-	public static function fromDOMElement(DOMNode $element){
+	public static function fromDOMElement(\DOMNode $element){
 		if ($element instanceOf DOMText){
 			return $element->nodeValue;
 		}else{
@@ -249,7 +249,7 @@ class XliffNode{
 			
 			//check if tag is supported
 			if (empty(self::$mapNameToClass[$element->tagName])){
-				$cls = 'XliffNode';
+				$cls = 'oyagev\PhpXliff\XliffNode';
 				//throw new Exception(sprintf("Tag name '%s' is unsupported",$name));
 			}else{
 				//Create the XliffNode object (concrete object)

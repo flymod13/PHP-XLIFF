@@ -13,7 +13,7 @@ namespace oyagev\PhpXliff;
 class XliffFileBody extends XliffNode{
 	protected $name = 'body';
 	protected $supportedContainers = array(
-    	'groups'	=> 'XliffUnitsGroup',
-		'trans-units'		=> 'XliffUnit'
+    	'groups'	=> 'oyagev\PhpXliff\XliffUnitsGroup',
+		'trans-units'		=> 'oyagev\PhpXliff\XliffUnit'
     );
 }

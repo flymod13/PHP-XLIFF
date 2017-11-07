@@ -18,7 +18,7 @@ class XliffDocument extends XliffNode {
     
     protected $name = 'xliff';
     protected $supportedContainers = array(
-    	'files' => 'XliffFile',
+    	'files' => 'oyagev\PhpXliff\XliffFile',
     );
     
     
@@ -38,7 +38,7 @@ class XliffDocument extends XliffNode {
      */
     public function toDOM(){
     	// create the new document
-    	$doc = new DOMDocument();
+    	$doc = new \DOMDocument();
 
         // create the xliff root element
         $xliff = $this->toDOMElement($doc);
@@ -61,7 +61,7 @@ class XliffDocument extends XliffNode {
      */
     public static function fromDOM(DOMDocument $doc){
     	if (!($doc->firstChild &&  $doc->firstChild->tagName=='xliff'))
-    		throw new Exception("Not an XLIFF document");
+    		throw new \Exception("Not an XLIFF document");
     		
     	
     	$xlfDoc = $doc->firstChild;
