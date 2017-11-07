@@ -3,6 +3,8 @@
  * @author Oren Yagev <oyagev@gmail.com>
  */
 
+namespace oyagev\PhpXliff;
+
 /**
  * Parent class for nodes in the xliff document
  */
