@@ -59,7 +59,7 @@ class XliffDocument extends XliffNode {
      * @throws Exception
      * @return XliffDocument
      */
-    public static function fromDOM(DOMDocument $doc){
+    public static function fromDOM(\DOMDocument $doc){
     	if (!($doc->firstChild &&  $doc->firstChild->tagName=='xliff'))
     		throw new \Exception("Not an XLIFF document");
     		

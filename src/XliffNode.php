@@ -242,7 +242,7 @@ class XliffNode{
 	 * @return string|XliffNode
 	 */
 	public static function fromDOMElement(\DOMNode $element){
-		if ($element instanceOf DOMText){
+		if ($element instanceOf \DOMText){
 			return $element->nodeValue;
 		}else{
 			$name = $element->tagName;
