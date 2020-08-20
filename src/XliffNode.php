@@ -17,6 +17,7 @@ class XliffNode
         'trans-unit'=> 'oyagev\PhpXliff\XliffUnit',
         'source'    => 'oyagev\PhpXliff\XliffNode',
         'target'    => 'oyagev\PhpXliff\XliffNode',
+        'note'      => 'oyagev\PhpXliff\XliffNote',
     );
 
 
@@ -202,9 +203,10 @@ class XliffNode
                 $this->containers[$pluralName][] = new $cls();
 
             }
-            if (empty($this->containers[$pluralName])) return FALSE;
-            return end($this->containers[$pluralName]);
 
+            if (empty($this->containers[$pluralName])) return FALSE;
+
+            return end($this->containers[$pluralName]);
         }
         elseif (!empty($this->supportedNodes[$name])) {
 
