@@ -5,7 +5,7 @@ This library help in the process of creating and navigating within an XLIFF docu
 ## Installation ##
 
 ```
-composer config repositories.oyagev/PHP-XLIFF git https://github.com/BrandonGillis/PHP-XLIFF.git
+composer config repositories.oyagev/PHP-XLIFF git https://github.com/flymod13/PHP-XLIFF.git
 composer require oyagev/PHP-XLIFF:dev-master
 ```
 
