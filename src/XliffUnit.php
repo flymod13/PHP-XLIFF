@@ -15,4 +15,7 @@ class XliffUnit extends XliffNode
         'source' => 'oyagev\PhpXliff\XliffNode',
         'target' => 'oyagev\PhpXliff\XliffNode',
     );
+    protected $supportedContainers = array(
+        'notes' => 'oyagev\PhpXliff\XliffNote',
+    );
 }
