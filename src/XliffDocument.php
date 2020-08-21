@@ -78,4 +78,13 @@ class XliffDocument extends XliffNode
 
         return $element;
     }
+
+    public static function fromXML(string $xml)
+    {
+        $dom = new \DOMDocument();
+
+        $dom->loadXML($xml);
+
+        return self::fromDOM($dom);
+    }
 }
